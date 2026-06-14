@@ -1,7 +1,13 @@
-import Divider from "./components/Divider";
 import Collection from "./components/Collection";
+import Divider from "./components/Divider";
+import { supabase } from "./lib/supabase";
 
-export default function Home() {
+export default async function Home() {
+  const { data: collections, error } = await supabase
+    .from("collections")
+    .select("*")
+    .order("created_at", { ascending: true });
+
   return (
     <main className="min-h-screen px-6 md:px-12 py-8">
       <nav className="flex justify-between items-center mb-24">
@@ -23,43 +29,16 @@ export default function Home() {
         </p>
       </section>
 
-      <Divider />
-
-      <Collection
-        title="mr. worldwide bird collection"
-        subtitle="— feathered friends from every corner of the world"
-        photos={[
-          "/photos/birds/bird1.jpeg",
-          "/photos/birds/bird2.jpeg",
-          "/photos/birds/bird3.jpeg",
-          "/photos/birds/bird4.jpeg",
-          "/photos/birds/bird5.jpeg",
-        ]}
-      />
-
-      <Divider />
-
-      <Collection
-        title="summer vibezzz"
-        subtitle="— golden hours, salty air, and long lazy days"
-        photos={[
-          "/photos/summer/summer1.jpeg",
-          "/photos/summer/summer2.jpeg",
-          "/photos/summer/summer3.jpeg",
-        ]}
-      />
-
-      <Divider />
-
-      <Collection
-        title="cute pastries and drinkus"
-        subtitle="— every café visit, every flaky croissant, every perfect latte"
-        photos={[
-          "/photos/pastries/pastry1.jpeg",
-          "/photos/pastries/pastry2.jpeg",
-          "/photos/pastries/pastry3.jpeg",
-        ]}
-      />
+      {collections?.map((collection) => (
+        <div key={collection.id}>
+          <Divider />
+          <Collection
+            title={collection.title}
+            subtitle={collection.subtitle}
+            photos={collection.photos}
+          />
+        </div>
+      ))}
 
       <footer className="mt-32 mb-8 text-center">
         <p className="font-script text-4xl text-gray-300">my little portfolio.</p>

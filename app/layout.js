@@ -22,6 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${pinyon.variable} ${italiana.variable}`}>
+        <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
         {children}
       </body>
     </html>
