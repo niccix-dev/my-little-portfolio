@@ -36,6 +36,8 @@ export default async function Home() {
             title={collection.title}
             subtitle={collection.subtitle}
             photos={collection.photos}
+            font={collection.font}
+            subtitleFont={collection.subtitle_font}
           />
         </div>
       ))}

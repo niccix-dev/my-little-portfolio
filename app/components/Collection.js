@@ -8,11 +8,11 @@ const breakpointColumns = {
   480: 1,
 };
 
-export default function Collection({ title, subtitle, photos }) {
+export default function Collection({ title, subtitle, photos, font, subtitleFont }) {
   return (
     <section className="max-w-6xl mx-auto px-6 md:px-12 mt-32">
-      <h2 className="font-script text-5xl md:text-6xl mb-4">{title}</h2>
-      <p className="text-sm text-gray-400 italic mb-8">{subtitle}</p>
+      <h2 className={`${font || "font-script"} text-5xl md:text-6xl mb-4`}>{title}</h2>
+      <p className={`${subtitleFont || "font-italiana-italic"} text-sm text-gray-400 mb-8`}>{subtitle}</p>
 
       <Masonry
         breakpointCols={breakpointColumns}
