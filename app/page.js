@@ -1,6 +1,7 @@
 import Collection from "./components/Collection";
 import Divider from "./components/Divider";
 import { supabase } from "./lib/supabase";
+import Hero from "./components/Hero";
 
 export default async function Home() {
   const { data: collections, error } = await supabase
@@ -17,17 +18,7 @@ export default async function Home() {
         </a>
       </nav>
 
-      <section className="max-w-3xl mx-auto text-center mt-32">
-        <p className="text-sm md:text-base text-gray-500 mb-6">
-          photographer & collector of beautiful things
-        </p>
-        <h1 className="font-script text-6xl md:text-8xl mb-6">
-          my little portfolio.
-        </h1>
-        <p className="text-sm md:text-base text-gray-500 leading-relaxed">
-          birds, beaches & buttery pastries — shot on film and heart
-        </p>
-      </section>
+      <Hero />
 
       {collections?.map((collection) => (
         <div key={collection.id}>
