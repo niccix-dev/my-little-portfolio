@@ -33,8 +33,23 @@ export default function Dashboard() {
     const { data } = await supabase
       .from("collections")
       .select("*")
-      .order("created_at", { ascending: true });
+      .order("position", { ascending: true });
     setCollections(data || []);
+  }
+
+  async function moveCollection(index, direction) {
+    const newCollections = [...collections];
+    const targetIndex = direction === "up" ? index - 1 : index + 1;
+
+    if (targetIndex < 0 || targetIndex >= newCollections.length) return;
+
+    const current = newCollections[index];
+    const target = newCollections[targetIndex];
+
+    await supabase.from("collections").update({ position: target.position }).eq("id", current.id);
+    await supabase.from("collections").update({ position: current.position }).eq("id", target.id);
+
+    loadCollections();
   }
 
   async function handleLogout() {
@@ -258,7 +273,7 @@ export default function Dashboard() {
       <h2 className="font-script text-3xl mb-6">your collections</h2>
 
       <div className="flex flex-col gap-3">
-        {collections.map((c) => (
+        {collections.map((c, index) => (
           <div
             key={c.id}
             className="flex justify-between items-center border border-gray-200 rounded-sm px-4 py-3"
@@ -267,7 +282,21 @@ export default function Dashboard() {
               <p className="text-sm font-medium">{c.title}</p>
               <p className="text-xs text-gray-400">{c.photos?.length || 0} photos</p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-3 items-center">
+              <button
+                onClick={() => moveCollection(index, "up")}
+                disabled={index === 0}
+                className="text-sm text-gray-500 hover:text-gray-700 disabled:opacity-30"
+              >
+                ↑
+              </button>
+              <button
+                onClick={() => moveCollection(index, "down")}
+                disabled={index === collections.length - 1}
+                className="text-sm text-gray-500 hover:text-gray-700 disabled:opacity-30"
+              >
+                ↓
+              </button>
               <button
                 onClick={() => startEdit(c)}
                 className="text-sm text-gray-500 hover:text-gray-700"

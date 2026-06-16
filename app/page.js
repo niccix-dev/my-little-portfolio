@@ -7,7 +7,7 @@ export default async function Home() {
   const { data: collections, error } = await supabase
     .from("collections")
     .select("*")
-    .order("created_at", { ascending: true });
+    .order("position", { ascending: true });
 
   return (
     <main className="min-h-screen px-6 md:px-12 py-8">
@@ -20,7 +20,7 @@ export default async function Home() {
 
       <Hero />
 
-      {collections?.map((collection) => (
+      {collections?.map((collection, index) => (
         <div key={collection.id}>
           <Divider />
           <Collection
@@ -29,6 +29,7 @@ export default async function Home() {
             photos={collection.photos}
             font={collection.font}
             subtitleFont={collection.subtitle_font}
+            decorationIndex={index}
           />
         </div>
       ))}
