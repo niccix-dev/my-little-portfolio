@@ -22,6 +22,7 @@ const decorationSets = [
   ],
   [
     { icon: "sparkle", className: "w-4 h-4 absolute -bottom-6 left-1/2 opacity-50" },
+    { icon: "heart", className: "w-3 h-3 absolute top-2 right-2 opacity-40" },
   ],
   [
     { icon: "heart", className: "w-3 h-3 absolute top-4 right-4 opacity-40" },
