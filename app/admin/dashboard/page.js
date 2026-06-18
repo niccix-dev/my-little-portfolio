@@ -64,6 +64,9 @@ export default function Dashboard() {
         uploadPreset: process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
         multiple: true,
         sources: ["local"],
+        maxFileSize: 5000000,
+        clientAllowedFormats: ["jpg", "jpeg", "png", "webp"],
+        transformation: [{ width: 1800, crop: "limit", quality: "auto" }],
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
