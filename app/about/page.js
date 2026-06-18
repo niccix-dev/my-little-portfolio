@@ -25,7 +25,7 @@ export default function About() {
 
       </section>
 
-      <footer className="mt-32 mb-8">
+      <footer className="mt-32 mb-8 text-center">
         <p className="font-script text-4xl text-gray-300">my little portfolio.</p>
       </footer>
     </main>
