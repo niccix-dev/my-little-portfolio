@@ -20,8 +20,8 @@ export default function Hero() {
       <p className="text-sm md:text-base text-gray-500 leading-relaxed">
         birds, beaches & buttery pastries — shot on film and heart
       </p>
-      <PixelSparkle className="w-5 h-5 absolute -top-2 left-1/4 opacity-60" />
-      <PixelHeart className="w-4 h-4 absolute top-8 right-1/4 opacity-50" />
+      <PixelSparkle className="w-5 h-5 absolute -top-6 left-4 opacity-60" />
+      <PixelHeart className="w-4 h-4 absolute top-6 right-4 opacity-50" />
     </motion.section>
   );
 }

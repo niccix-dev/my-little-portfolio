@@ -10,19 +10,19 @@ export default function About() {
 
       <section className="max-w-2xl mx-auto mt-16">
         <h1 className="font-script text-5xl md:text-6xl mb-12">
-          hello, I&apos;m Nicole.
+          Hi, I&apos;m Nicole.
         </h1>
 
-        <p className="text-gray-500 leading-relaxed mb-16">
-          I photograph the things that catch my eye — a bird mid-flight, a
-          crema-crowned espresso, the way afternoon light hits ocean water.
+        <p className="text-gray-500 leading-relaxed mb-16 text-xl">
+          This is my portfolio of casual non-edited photos that I have taken
+          with my phone, during my day to day life. I programmed this little
+          website since I am too lazy and mysterious to post on my socials. 
+          You can expect to see some silly photos as well as some pretty ones 
+          and I hope you will enjoy them.
+
+          Thanks for checking them out!
         </p>
 
-        <div className="flex gap-8 text-sm tracking-widest text-gray-500">
-          <a href="#" className="hover:text-gray-700">instagram</a>
-          <a href="#" className="hover:text-gray-700">vsco</a>
-          <a href="#" className="hover:text-gray-700">contact</a>
-        </div>
       </section>
 
       <footer className="mt-32 mb-8">
