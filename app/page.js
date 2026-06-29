@@ -2,6 +2,7 @@ import Collection from "./components/Collection";
 import Divider from "./components/Divider";
 import { supabase } from "./lib/supabase";
 import Hero from "./components/Hero";
+import CollectionNav from "./components/CollectionNav";
 
 export default async function Home() {
   const { data: collections, error } = await supabase
@@ -19,6 +20,7 @@ export default async function Home() {
       </nav>
 
       <Hero />
+        <CollectionNav collections={collections || []} />
 
       {collections?.map((collection, index) => (
         <div key={collection.id}>
@@ -30,6 +32,7 @@ export default async function Home() {
             font={collection.font}
             subtitleFont={collection.subtitle_font}
             decorationIndex={index}
+            id={collection.id}
           />
         </div>
       ))}

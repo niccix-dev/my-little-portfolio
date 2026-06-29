@@ -31,11 +31,12 @@ const decorationSets = [
   ],
 ];
 
-export default function Collection({ title, subtitle, photos, font, subtitleFont, decorationIndex = 0 }) {
+export default function Collection({ title, subtitle, photos, font, subtitleFont, decorationIndex = 0, id }) {
   const decorations = decorationSets[decorationIndex % decorationSets.length];
 
   return (
     <motion.section
+      id={`collection-${id}`}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
